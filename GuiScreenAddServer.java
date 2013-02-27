@@ -1,4 +1,5 @@
 //part of the Server List Folder mod by palechip
+//license GPLv3 (http://www.gnu.org/licenses/quick-guide-gplv3.html)
 //to extend the mod, you need to decompile Minecraft and copy the modifyed code to the given function.
 //that's because it isn't allowed to release decompiled minecraft code.
 

@@ -1,4 +1,5 @@
 //part of the Server List Folder mod by palechip
+//license GPLv3 (http://www.gnu.org/licenses/quick-guide-gplv3.html)
 //to extend the mod, you need to decompile Minecraft and copy the modifyed code to the given function.
 //that's because it isn't allowed to release decompiled minecraft code.
 
@@ -73,6 +74,7 @@ public class GuiMultiplayer extends GuiScreen
         	if(mod_ServerListFolder.checkIfFolder(serverToCheck)){
         		this.internetServerList = new ServerList(this.mc);
         		this.internetServerList.loadServerList();
+				this.selectedServer = -1; //makes no server selected
                 this.serverSlotContainer = new GuiSlotServer(this);//needs to be reinitialised
                 if(newServer){ //adds the upwards server
                 	ServerData upwardsServer = new ServerData("...","dir:...");
