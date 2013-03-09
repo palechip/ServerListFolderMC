@@ -42,7 +42,7 @@ public class GuiScreenAddServer extends GuiScreen
         this.serverAddress.setText(this.newServerData.serverIP);
         //MODIFIED
         //don't disable the done button if the server IP is empty
-        ((GuiButton)this.controlList.get(0)).enabled = /*this.serverAddress.getText().length() > 0 &&*/ this.serverAddress.getText().split(":").length > 0 && this.serverName.getText().length() > 0;
+        ((GuiButton)this.buttonList.get(0)).enabled = /*this.serverAddress.getText().length() > 0 &&*/ this.serverAddress.getText().split(":").length > 0 && this.serverName.getText().length() > 0;
         //MODIFIED END
     }
 
@@ -60,7 +60,7 @@ public class GuiScreenAddServer extends GuiScreen
 
         //MODIFIED
         //don't disable the done button if the server IP is empty
-        ((GuiButton)this.controlList.get(0)).enabled = /*this.serverAddress.getText().length() > 0 &&*/ this.serverAddress.getText().split(":").length > 0 && this.serverName.getText().length() > 0;
+        ((GuiButton)this.buttonList.get(0)).enabled = /*this.serverAddress.getText().length() > 0 &&*/ this.serverAddress.getText().split(":").length > 0 && this.serverName.getText().length() > 0;
         //MODIFIED END
     }
 

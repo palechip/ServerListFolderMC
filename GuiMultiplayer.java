@@ -29,7 +29,7 @@ public class GuiMultiplayer extends GuiScreen
         {
             this.field_74024_A = true;
             //MODIFIED
-            mod_ServerListFolder.resetToMainServerList(); //tells it to load the main server list
+            ServerListFolder.resetToMainServerList(); //tells it to load the main server list
             //MODIFIED END
             this.internetServerList = new ServerList(this.mc);
 			//some more code in the decompiled Minecraft
@@ -48,7 +48,7 @@ public class GuiMultiplayer extends GuiScreen
             else if (par1GuiButton.id == 8)
             {
             	//MODIFIED
-            	mod_ServerListFolder.lockNextReset(); //stays the same folder although reinitialising
+            	ServerListFolder.lockNextReset(); //stays the same folder although reinitialising
             	//MODIFIED END
                 this.mc.displayGuiScreen(new GuiMultiplayer(this.parentScreen));
             }
@@ -65,22 +65,17 @@ public class GuiMultiplayer extends GuiScreen
         {
 			//MODIFIED
         	ServerData serverToCheck = this.internetServerList.getServerData(par1);
-        	Boolean newServer = false; //if it's a new server, a ... folder will be added.
-        	if(mod_ServerListFolder.checkIfNewFolder(serverToCheck)){
+        	if(ServerListFolder.checkIfNewFolder(serverToCheck)){
         		internetServerList.setServer(par1, serverToCheck);//checkIfNewFolder edited the serverToCheck
         		internetServerList.saveServerList();
-        		newServer = true;
         	}
-        	if(mod_ServerListFolder.checkIfFolder(serverToCheck)){
+        	if(ServerListFolder.checkIfFolder(serverToCheck)){
         		this.internetServerList = new ServerList(this.mc);
         		this.internetServerList.loadServerList();
 				this.selectedServer = -1; //makes no server selected
                 this.serverSlotContainer = new GuiSlotServer(this);//needs to be reinitialised
-                if(newServer){ //adds the upwards server
-                	ServerData upwardsServer = new ServerData("...","dir:...");
-                	upwardsServer.setHideAddress(true);//automatically hide the IP
-                	internetServerList.addServerData(upwardsServer);
-                	internetServerList.saveServerList();
+                if(internetServerList.countServers() == 0){ //tests for an empty = new server
+                	internetServerList.saveServerList();//this will automatically add a ... folder
                 }
         		return;//cancel the connection
         	}

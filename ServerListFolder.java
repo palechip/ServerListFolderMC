@@ -76,27 +76,31 @@ public class ServerListFolder {
 	
 	//this function adds a ... folder if there is no, makes sure that the ... folder is always the last one.
 	public static void ManageUpwardsFolders(ServerList list){
-		if(!(index == 0)){ //if the loaded list is the main server list, no ... folder will be added
-			int serverCount = list.countServers();
+			if(index != 0){//index == 0 means that you are in the main server list, so no ... server will be added
 			ServerData upwardsServer = new ServerData("...", "dir:...");
 			upwardsServer.setHideAddress(true);
-		
-			if((serverCount > 1) && (list.getServerData(serverCount-2).serverIP.equals("dir:..."))){ //there was a server added
-				list.removeServerData(serverCount-2);
+			
+			if(list.countServers() == 0){ //new list created?
 				list.addServerData(upwardsServer);
+				return;
 			}
-		
-			Boolean upwardsServerFound = false;
-			for(int c=0;c<serverCount;c++){ //if there is any ... folder, no new shall be added
+			
+			boolean upwardServerFound = false;
+			
+			for(int c=0;c<list.countServers();c++){
 				if(list.getServerData(c).serverIP.equals("dir:...")){
-					upwardsServerFound = true;
-					break;
+					if(c == list.countServers()-1){//tests for the last server in the list
+						upwardServerFound = true;
+						break;
+					}
+					else{
+						list.removeServerData(c);//any ... folder above the last will be removed
+					}
 				}
 			}
-			if(!upwardsServerFound){
+			if(!upwardServerFound){
 				list.addServerData(upwardsServer);
 			}
-		}
 	}
 	
 	//when the server list gets refreshed or reopened this function gets called

@@ -34,6 +34,6 @@ class ThreadPollServers extends Thread{
                                 	return;
                                 }
                                 //MODIFIED END
-                                this.pollServersServerData.serverMOTD = "\u00a78Polling..";
+                                this.pollServersServerData.serverMOTD = EnumChatFormatting.DARK_GRAY + "Polling..";
                                 //there is more code in the decompiled version of Minecraft
 }
