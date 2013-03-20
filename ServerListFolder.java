@@ -6,11 +6,14 @@
 package net.minecraft.src;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ServerListFolder {
 	//saves the opened hierarchy
 	private static ArrayList<String> openedFolders;
 	private static int index;
+	
+	private static boolean april1st;
 	
 	//makes the refresh button not changing to the main servers
 	private static Boolean lockNextReset;
@@ -22,7 +25,13 @@ public class ServerListFolder {
 			openedFolders.add(2, "");
 			//I don't think many people will have a deeper folder structure.
 			index = 0;
-			lockNextReset = false;
+			lockNextReset = false;			
+			if(Calendar.getInstance().MONTH == Calendar.APRIL && Calendar.getInstance().DAY_OF_MONTH == 1){
+				ServerListFolder.april1st = true;
+			}
+			else{
+				ServerListFolder.april1st = false;
+			}
 	}
 	
 	//returns the correct folder file(FOLDER-foldername.dat) of the currently opened folder
@@ -77,29 +86,31 @@ public class ServerListFolder {
 	//this function adds a ... folder if there is no, makes sure that the ... folder is always the last one.
 	public static void ManageUpwardsFolders(ServerList list){
 			if(index != 0){//index == 0 means that you are in the main server list, so no ... server will be added
-			ServerData upwardsServer = new ServerData("...", "dir:...");
-			upwardsServer.setHideAddress(true);
+				ServerData upwardsServer = new ServerData("...", "dir:...");
+				upwardsServer.setHideAddress(true);
 			
-			if(list.countServers() == 0){ //new list created?
-				list.addServerData(upwardsServer);
-				return;
-			}
+				if(list.countServers() == 0){ //new list created?
+					list.addServerData(upwardsServer);
+					return;
+				}
 			
-			boolean upwardServerFound = false;
+				boolean upwardServerFound = false;
 			
-			for(int c=0;c<list.countServers();c++){
-				if(list.getServerData(c).serverIP.equals("dir:...")){
-					if(c == list.countServers()-1){//tests for the last server in the list
-						upwardServerFound = true;
-						break;
-					}
-					else{
-						list.removeServerData(c);//any ... folder above the last will be removed
+				for(int c=0;c<list.countServers();c++){
+					if(list.getServerData(c).serverIP.equals("dir:...")){
+						if(c == list.countServers()-1){//tests for the last server in the list
+							upwardServerFound = true;
+							break;
+						}
+						else{
+							list.removeServerData(c);//any ... folder above the last will be removed
+						}
 					}
 				}
-			}
-			if(!upwardServerFound){
-				list.addServerData(upwardsServer);
+			
+				if(!upwardServerFound){
+					list.addServerData(upwardsServer);
+				}
 			}
 	}
 	
@@ -118,6 +129,11 @@ public class ServerListFolder {
 	//this gets only called when the list gets refreshed
 	public static void lockNextReset(){
 		lockNextReset = true;
+	}
+	
+	//no comment :P
+	public static boolean isApril1st(){
+		return april1st;
 	}
 
 }

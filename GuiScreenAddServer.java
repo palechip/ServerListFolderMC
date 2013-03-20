@@ -10,29 +10,7 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiScreenAddServer extends GuiScreen
 {
-    /** This GUI's parent GUI. */
-    private GuiScreen parentGui;
-    private GuiTextField serverAddress;
-    private GuiTextField serverName;
-
-    /** ServerData to be modified by this GUI */
-    private ServerData newServerData;
-
-    public GuiScreenAddServer(GuiScreen par1GuiScreen, ServerData par2ServerData)
-    {
-        this.parentGui = par1GuiScreen;
-        this.newServerData = par2ServerData;
-    }
-
-    /**
-     * Called from the main game loop to update the screen.
-     */
-    public void updateScreen()
-    {
-        this.serverName.updateCursorCounter();
-        this.serverAddress.updateCursorCounter();
-    }
-
+	//more code in the decopmiled Minecraft
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */

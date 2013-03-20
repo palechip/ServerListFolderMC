@@ -29,8 +29,13 @@ class ThreadPollServers extends Thread{
                                 //MODIFIED
                                 //checks for a Folder and sets its MOTD to Folder
                                 if(this.pollServersServerData.serverIP.equals("") || this.pollServersServerData.serverIP.startsWith("dir:")){
-                                	this.pollServersServerData.pingToServer = -1L; //"(no-connection)
-                                	this.pollServersServerData.serverMOTD = "\u00A75Folder"; // \u00A75 is purple :)
+                                	this.pollServersServerData.pingToServer = -1L; //"(no-connection)       
+                                	if(ServerListFolder.isApril1st()){
+                                		this.pollServersServerData.serverMOTD = EnumChatFormatting.OBFUSCATED + "Folder";
+                                	}
+                                	else{
+                                		this.pollServersServerData.serverMOTD = EnumChatFormatting.DARK_PURPLE + "Folder";
+                                	}
                                 	return;
                                 }
                                 //MODIFIED END
