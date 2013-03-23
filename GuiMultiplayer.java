@@ -55,6 +55,30 @@ public class GuiMultiplayer extends GuiScreen
 			//more code in the decompiled Minecraft
         }
     }
+	
+	/**
+     * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
+     */
+    protected void keyTyped(char par1, int par2)
+    {
+        int var3 = this.selectedServer;
+
+        if (par2 == 59)
+        {
+            //some more code in the decompiled Minecraft
+        }
+        else if(isCtrlKeyDown() && par2 == 46){ //ctrl+c
+        	ServerListFolder.getClipboard().Copy(selectedServer, internetServerList, isShiftKeyDown());
+        }
+        else if(isCtrlKeyDown() && par2 == 47){//ctrl+v
+        	ServerListFolder.getClipboard().Paste(selectedServer, internetServerList);
+        }
+        else
+        {
+			//some more code in the decompiled Minecraft
+        }
+    }
+
 
     /**
      * Join server by slot index

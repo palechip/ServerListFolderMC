@@ -12,6 +12,8 @@ public class ServerListFolder {
 	//saves the opened hierarchy
 	private static ArrayList<String> openedFolders;
 	private static int index;
+
+	private static ServerListFolderClipboard clipboard;
 	
 	private static boolean april1st;
 	
@@ -25,7 +27,10 @@ public class ServerListFolder {
 			openedFolders.add(2, "");
 			//I don't think many people will have a deeper folder structure.
 			index = 0;
-			lockNextReset = false;			
+			lockNextReset = false;
+			
+			clipboard= new ServerListFolderClipboard();
+			
 			if(Calendar.getInstance().MONTH == Calendar.APRIL && Calendar.getInstance().DAY_OF_MONTH == 1){
 				ServerListFolder.april1st = true;
 			}
@@ -130,6 +135,28 @@ public class ServerListFolder {
 	public static void lockNextReset(){
 		lockNextReset = true;
 	}
+	
+	public static ServerListFolderClipboard getClipboard(){
+		return clipboard;
+	}
+	
+	/*public static boolean keyInMultiplayerGuiTyped(char par1, int par2, int selectedServer,boolean shift, boolean control, ServerList list){
+		if(control){
+			if(par1=='c'){
+				if(!shift)
+					clipboard.clear();
+				clipboard.add(list.getServerData(selectedServer));
+			}
+			else if(par1=='v'){
+				for(int c=0;c<clipboard.size();c++){
+					list.addServerData(clipboard.get(c));
+				}
+				list.saveServerList();
+			}
+			return true;
+		}
+		return false;
+	}*/
 	
 	//no comment :P
 	public static boolean isApril1st(){
