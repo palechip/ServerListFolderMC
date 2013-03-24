@@ -73,6 +73,19 @@ public class GuiMultiplayer extends GuiScreen
         else if(isCtrlKeyDown() && par2 == 47){//ctrl+v
         	ServerListFolder.getClipboard().Paste(selectedServer, internetServerList);
         }
+		//allow the user to select a server using the arrow keys
+        else if(!isShiftKeyDown() && par2 == 200) //arrow up
+        {
+        	if(selectedServer > 0){
+        		selectedServer--;
+        	}
+        }
+        else if(!isShiftKeyDown() && par2 == 208)//arrow down
+        {
+        	if(selectedServer < internetServerList.countServers() -1 ){
+        		selectedServer++;
+        	}
+        }
         else
         {
 			//some more code in the decompiled Minecraft
