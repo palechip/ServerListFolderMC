@@ -64,6 +64,7 @@ public class ServerListFolderClipboard {
 		serverList.saveServerList(); //save the list
 		}catch(Exception e){
 		//do nothing, but don't make Minecraft crash.
+			System.out.println("Paste failed. Exception: " + e.getMessage());
 		}
 	}
 
