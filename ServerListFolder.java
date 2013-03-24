@@ -31,7 +31,9 @@ public class ServerListFolder {
 			
 			clipboard= new ServerListFolderClipboard();
 			
-			if(Calendar.getInstance().MONTH == Calendar.APRIL && Calendar.getInstance().DAY_OF_MONTH == 1){
+			Calendar cal = Calendar.getInstance();
+			
+			if(cal.get(2) == 3 && cal.get(5) == 1){
 				ServerListFolder.april1st = true;
 			}
 			else{
