@@ -142,24 +142,6 @@ public class ServerListFolder {
 		return clipboard;
 	}
 	
-	/*public static boolean keyInMultiplayerGuiTyped(char par1, int par2, int selectedServer,boolean shift, boolean control, ServerList list){
-		if(control){
-			if(par1=='c'){
-				if(!shift)
-					clipboard.clear();
-				clipboard.add(list.getServerData(selectedServer));
-			}
-			else if(par1=='v'){
-				for(int c=0;c<clipboard.size();c++){
-					list.addServerData(clipboard.get(c));
-				}
-				list.saveServerList();
-			}
-			return true;
-		}
-		return false;
-	}*/
-	
 	//no comment :P
 	public static boolean isApril1st(){
 		return april1st;
