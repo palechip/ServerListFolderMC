@@ -23,12 +23,12 @@ public class ServerList
     {
         try
         {
-        	//MODIFIED
-        	//uses the file name the mod tells him
+            // MODIFIED
+            // uses the file name the mod tells him
             NBTTagCompound var1 = CompressedStreamTools.read(new File(this.mc.mcDataDir, ServerListFolder.getFolderFile()));
-            //MODIFIED END
+            // MODIFIED END
             NBTTagList var2 = var1.getTagList("servers");
-			//some more code in the decompiled Minecraft
+            // some more code in the decompiled Minecraft
         }
         catch (Exception var4)
         {
@@ -43,17 +43,17 @@ public class ServerList
     {
         try
         {
-        	//MODIFIED
-        	ServerListFolder.ManageUpwardsFolders(this); //... server stuff
-        	//MODIFIED END
+            // MODIFIED
+            ServerListFolder.ManageUpwardsFolders(this); // ... server stuff
+            // MODIFIED END
         	
             NBTTagList var1 = new NBTTagList();
-			//some more code in the decompiled Minecraft
+            //some more code in the decompiled Minecraft
             var5.setTag("servers", var1);
-            //CHANGED
-            //uses the file name the mod tells him. 
+            // CHANGED
+            // uses the file name the mod tells him. 
             CompressedStreamTools.safeWrite(var5, new File(this.mc.mcDataDir, ServerListFolder.getFolderFile()));
-            //CHANGED END
+            // CHANGED END
         }
         catch (Exception var4)
         {

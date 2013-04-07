@@ -26,19 +26,18 @@ class ThreadPollServers extends Thread{
                             try
                             {
                                 var27 = true;
-                                //MODIFIED
+                                // MODIFIED
                                 //checks for a Folder and sets its MOTD to Folder
-                                if(this.pollServersServerData.serverIP.equals("") || this.pollServersServerData.serverIP.startsWith("dir:")){
-                                	this.pollServersServerData.pingToServer = -1L; //"(no-connection)       
-                                	if(ServerListFolder.isApril1st()){
-                                		this.pollServersServerData.serverMOTD = EnumChatFormatting.OBFUSCATED + "Folder";
-                                	}
-                                	else{
-                                		this.pollServersServerData.serverMOTD = EnumChatFormatting.DARK_PURPLE + "Folder";
-                                	}
-                                	return;
+                                if(this.pollServersServerData.serverIP.equals("") || this.pollServersServerData.serverIP.startsWith("dir:")) {
+                                    this.pollServersServerData.pingToServer = -1L; // "(no-connection)"
+                                    if(ServerListFolder.isApril1st()) {
+                                        this.pollServersServerData.serverMOTD = EnumChatFormatting.OBFUSCATED + "Folder";
+                                    } else {
+                                        this.pollServersServerData.serverMOTD = EnumChatFormatting.DARK_PURPLE + "Folder";
+                                    }
+                                    return;
                                 }
-                                //MODIFIED END
+                                // MODIFIED END
                                 this.pollServersServerData.serverMOTD = EnumChatFormatting.DARK_GRAY + "Polling..";
-                                //there is more code in the decompiled version of Minecraft
+                                // there is more code in the decompiled version of Minecraft
 }

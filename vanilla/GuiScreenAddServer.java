@@ -10,18 +10,18 @@ import org.lwjgl.input.Keyboard;
 
 public class GuiScreenAddServer extends GuiScreen
 {
-	//more code in the decopmiled Minecraft
+    // more code in the decopmiled Minecraft
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */
     public void initGui()
     {
-		//some more code in the decompiled Minecraft
+        // some more code in the decompiled Minecraft
         this.serverAddress.setText(this.newServerData.serverIP);
-        //MODIFIED
-        //don't disable the done button if the server IP is empty
+        // MODIFIED
+        // don't disable the done button if the server IP is empty
         ((GuiButton)this.buttonList.get(0)).enabled = /*this.serverAddress.getText().length() > 0 &&*/ this.serverAddress.getText().split(":").length > 0 && this.serverName.getText().length() > 0;
-        //MODIFIED END
+        // MODIFIED END
     }
 
 
@@ -30,16 +30,16 @@ public class GuiScreenAddServer extends GuiScreen
      */
     protected void keyTyped(char par1, int par2)
     {
-		//some more code in the decompiled minecraft
+        // some more code in the decompiled minecraft
         if (par1 == 13)
         {
             this.actionPerformed((GuiButton)this.controlList.get(0));
         }
 
-        //MODIFIED
-        //don't disable the done button if the server IP is empty
+        // MODIFIED
+        // don't disable the done button if the server IP is empty
         ((GuiButton)this.buttonList.get(0)).enabled = /*this.serverAddress.getText().length() > 0 &&*/ this.serverAddress.getText().split(":").length > 0 && this.serverName.getText().length() > 0;
-        //MODIFIED END
+        // MODIFIED END
     }
 
 }

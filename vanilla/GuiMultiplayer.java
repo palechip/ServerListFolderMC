@@ -28,14 +28,12 @@ public class GuiMultiplayer extends GuiScreen
         if (!this.field_74024_A)
         {
             this.field_74024_A = true;
-            //MODIFIED
-            ServerListFolder.resetToMainServerList(); //tells it to load the main server list
-            //MODIFIED END
+            // MODIFIED
+            ServerListFolder.resetToMainServerList(); // tells it to load the main server list
+            // MODIFIED END
             this.internetServerList = new ServerList(this.mc);
-			//some more code in the decompiled Minecraft
+            // some more code in the decompiled Minecraft
     }
-
-
 
     /**
      * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
@@ -44,15 +42,15 @@ public class GuiMultiplayer extends GuiScreen
     {
         if (par1GuiButton.enabled)
         {
-			//more code in the decompiled Minecraft
+            // more code in the decompiled Minecraft
             else if (par1GuiButton.id == 8)
             {
-            	//MODIFIED
-            	ServerListFolder.lockNextReset(); //stays the same folder although reinitialising
-            	//MODIFIED END
+                // MODIFIED
+                ServerListFolder.lockNextReset(); // stays the same folder although reinitialising
+                // MODIFIED END
                 this.mc.displayGuiScreen(new GuiMultiplayer(this.parentScreen));
             }
-			//more code in the decompiled Minecraft
+            // more code in the decompiled Minecraft
         }
     }
 	
@@ -65,30 +63,30 @@ public class GuiMultiplayer extends GuiScreen
 
         if (par2 == 59)
         {
-            //some more code in the decompiled Minecraft
+            // some more code in the decompiled Minecraft
         }
-        else if(isCtrlKeyDown() && par2 == 46){ //ctrl+c
-        	ServerListFolder.getClipboard().Copy(selectedServer, internetServerList, isShiftKeyDown());
+        else if(isCtrlKeyDown() && par2 == 46){ // ctrl+c
+            ServerListFolder.getClipboard().Copy(selectedServer, internetServerList, isShiftKeyDown());
         }
-        else if(isCtrlKeyDown() && par2 == 47){//ctrl+v
-        	ServerListFolder.getClipboard().Paste(selectedServer, internetServerList);
+        else if(isCtrlKeyDown() && par2 == 47){ // ctrl+v
+            ServerListFolder.getClipboard().Paste(selectedServer, internetServerList);
         }
-		//allow the user to select a server using the arrow keys
-        else if(!isShiftKeyDown() && par2 == 200) //arrow up
+        // allow the user to select a server using the arrow keys
+        else if(!isShiftKeyDown() && par2 == 200) // arrow up
         {
-        	if(selectedServer > 0){
+        	if(selectedServer > 0) {
         		selectedServer--;
         	}
         }
-        else if(!isShiftKeyDown() && par2 == 208)//arrow down
+        else if(!isShiftKeyDown() && par2 == 208) // arrow down
         {
-        	if(selectedServer < internetServerList.countServers() -1 ){
-        		selectedServer++;
+        	if(selectedServer < internetServerList.countServers() -1 ) {
+        	    selectedServer++;
         	}
         }
         else
         {
-			//some more code in the decompiled Minecraft
+            // some more code in the decompiled Minecraft
         }
     }
 
@@ -100,28 +98,28 @@ public class GuiMultiplayer extends GuiScreen
     {
         if (par1 < this.internetServerList.countServers())
         {
-			//MODIFIED
-        	ServerData serverToCheck = this.internetServerList.getServerData(par1);
-        	if(ServerListFolder.checkIfNewFolder(serverToCheck)){
-        		internetServerList.setServer(par1, serverToCheck);//checkIfNewFolder edited the serverToCheck
-        		internetServerList.saveServerList();
-        	}
-        	if(ServerListFolder.checkIfFolder(serverToCheck)){
-        		this.internetServerList = new ServerList(this.mc);
-        		this.internetServerList.loadServerList();
-				this.selectedServer = -1; //makes no server selected
-                this.serverSlotContainer = new GuiSlotServer(this);//needs to be reinitialised
-                if(internetServerList.countServers() == 0){ //tests for an empty = new server
-                	internetServerList.saveServerList();//this will automatically add a ... folder
+            // MODIFIED
+            ServerData serverToCheck = this.internetServerList.getServerData(par1);
+            if(ServerListFolder.checkIfNewFolder(serverToCheck)) {
+                internetServerList.setServer(par1, serverToCheck); // checkIfNewFolder edited the serverToCheck
+                internetServerList.saveServerList();
+            }
+            if(ServerListFolder.checkIfFolder(serverToCheck)){
+                this.internetServerList = new ServerList(this.mc);
+                this.internetServerList.loadServerList();
+                this.selectedServer = -1; // makes no server selected
+                this.serverSlotContainer = new GuiSlotServer(this); // needs to be reinitialised
+                if(internetServerList.countServers() == 0) { // tests for an empty = new server
+                    internetServerList.saveServerList(); // this will automatically add a ... folder
                 }
-        		return;//cancel the connection
-        	}
-        	//MODIFIED END
+                return; // cancel the connection
+            }
+            // MODIFIED END
             this.connectToServer(this.internetServerList.getServerData(par1));
         }
         else
         {
-			//some more code in the decompiled Minecraft
+            // some more code in the decompiled Minecraft
         }
     }
 }
