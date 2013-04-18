@@ -44,7 +44,7 @@ public class ServerList
         try
         {
             // MODIFIED
-            ServerListFolder.ManageUpwardsFolders(this); // ... server stuff
+            ServerListFolder.manageUpwardsFolders(this); // ... server stuff
             // MODIFIED END
         	
             NBTTagList var1 = new NBTTagList();

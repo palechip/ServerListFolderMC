@@ -8,16 +8,20 @@ package net.minecraft.src;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import net.minecraft.client.Minecraft;
+
 public class ServerListFolder {
     // saves the opened hierarchy
     private static ArrayList<String> openedFolders;
     private static int index;
     private static ServerListFolderClipboard clipboard;
+    public static ServerListFolderConfig config;
     private static boolean april1st;
     // makes the refresh button not changing to the main servers
     private static Boolean lockNextReset;
 
     static {
+        info("Loading the mod...");
         openedFolders = new ArrayList<String>(3);
         openedFolders.add(0, "servers");
         openedFolders.add(1, "");
@@ -27,6 +31,8 @@ public class ServerListFolder {
         lockNextReset = false;
 
         clipboard = new ServerListFolderClipboard();
+
+        config = new ServerListFolderConfig();
 
         Calendar cal = Calendar.getInstance();
 
@@ -90,7 +96,7 @@ public class ServerListFolder {
     /**
      *  this function adds a ... folder if there is no and makes sure that the ... folder is always the last one.
      */
-    public static void ManageUpwardsFolders(ServerList list) {
+    public static void manageUpwardsFolders(ServerList list) {
         if(index != 0) { // index == 0 means that you are in the main server list, so no ... server will be added
             ServerData upwardsServer = new ServerData("...", "dir:...");
             upwardsServer.setHideAddress(true);
@@ -146,5 +152,19 @@ public class ServerListFolder {
      */
     public static boolean isApril1st() {
         return april1st;
+    }
+
+    /**
+     * Prints a message to the console
+     */
+    public static void info(String message) {
+        Minecraft.getMinecraft().getLogAgent().logInfo("[ServerListFolder] " + message);
+    }
+
+    /**
+     * Prints a message as a warning to the console
+     */
+    public static void warn(String message) {
+        Minecraft.getMinecraft().getLogAgent().logWarning("[ServerListFolder] " + message);
     }
 }

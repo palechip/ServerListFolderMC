@@ -31,9 +31,9 @@ class ThreadPollServers extends Thread{
                                 if(this.pollServersServerData.serverIP.equals("") || this.pollServersServerData.serverIP.startsWith("dir:")) {
                                     this.pollServersServerData.pingToServer = -1L; // "(no-connection)"
                                     if(ServerListFolder.isApril1st()) {
-                                        this.pollServersServerData.serverMOTD = EnumChatFormatting.OBFUSCATED + "Folder";
+                                       this.pollServersServerData.serverMOTD = EnumChatFormatting.OBFUSCATED + ServerListFolder.config.FolderMotdText;
                                     } else {
-                                        this.pollServersServerData.serverMOTD = EnumChatFormatting.DARK_PURPLE + "Folder";
+                                        this.pollServersServerData.serverMOTD = ServerListFolder.config.FolderMotdColorCode + ServerListFolder.config.FolderMotdText;
                                     }
                                     return;
                                 }
