@@ -10,7 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 
 public class ServerList
 {
@@ -23,11 +23,12 @@ public class ServerList
     {
         try
         {
+            this.servers.clear();
             // MODIFIED
             // uses the file name the mod tells him
             NBTTagCompound var1 = CompressedStreamTools.read(new File(this.mc.mcDataDir, ServerListFolder.getFolderFile()));
             // MODIFIED END
-            NBTTagList var2 = var1.getTagList("servers");
+            if (var1 == null)
             // some more code in the decompiled Minecraft
         }
         catch (Exception var4)
@@ -58,5 +59,14 @@ public class ServerList
         catch (Exception var4)
         {
         }
+    }
+    
+    //readded (the removed this with 1.6)
+    /**
+     * Sets the given index in the list to the given ServerData instance.
+     */
+    public void setServer(int par1, ServerData par2ServerData)
+    {
+        this.servers.set(par1, par2ServerData);
     }
 }

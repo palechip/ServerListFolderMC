@@ -7,7 +7,7 @@ package net.minecraft.src;
 
 import java.util.ArrayList;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 
 public class ServerListFolderClipboard {
 

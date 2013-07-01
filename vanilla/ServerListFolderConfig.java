@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Properties;
-import net.minecraft.client.Minecraft;
+import net.minecraft.src.Minecraft;
 
 public class ServerListFolderConfig {
     private static Properties defaults = new Properties();
