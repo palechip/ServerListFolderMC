@@ -112,6 +112,9 @@ public class GuiMultiplayer extends GuiScreen
                 if(internetServerList.countServers() == 0) { // tests for an empty = new server
                     internetServerList.saveServerList(); // this will automatically add a ... folder
                 }
+                this.field_96289_p.enabled = false; // this is the "Edit" button
+                this.buttonDelete.enabled = false;
+                this.buttonSelect.enabled = false;
                 return; // cancel the connection
             }
             // MODIFIED END
