@@ -53,7 +53,7 @@ public class ServerListFolderConfig {
         config = new Properties(defaults);
 
         try {
-            configPath = Minecraft.getMinecraft().getMinecraftDir().getCanonicalPath() + File.separatorChar + "config" + File.separatorChar + "ServerListFolder" + File.separatorChar;
+            configPath = Minecraft.getMinecraft().mcDataDir.getCanonicalPath() + File.separatorChar + "config" + File.separatorChar + "ServerListFolder" + File.separatorChar;
 
             File cfg = new File(configPath + "ServerListFolder.cfg");
 
