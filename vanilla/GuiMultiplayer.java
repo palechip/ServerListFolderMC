@@ -43,13 +43,6 @@ public class GuiMultiplayer extends GuiScreen
         if (par1GuiButton.enabled)
         {
             // more code in the decompiled Minecraft
-            else if (par1GuiButton.id == 4)
-            {
-                this.directClicked = true;
-                //MODIFIED
-                this.mc.displayGuiScreen(new GuiScreenServerList(this, this.theServerData = new ServerData(I18n.func_135053_a("selectServer.defaultName"), "")));
-                //MODIFIED END
-            }
             else if (par1GuiButton.id == 3)
             {
                 this.addClicked = true;
@@ -57,6 +50,17 @@ public class GuiMultiplayer extends GuiScreen
                 this.mc.displayGuiScreen(new GuiScreenAddServerSLF(this, this.theServerData = new ServerData(I18n.func_135053_a("selectServer.defaultName"), "")));
                 //MODIFIED END
             }
+            else if (par1GuiButton.id == 7)
+            {
+                this.editClicked = true;
+                ServerData var8 = this.internetServerList.getServerData(this.selectedServer);
+                this.theServerData = new ServerData(var8.serverName, var8.serverIP);
+                this.theServerData.setHideAddress(var8.isHidingAddress());
+                //MODIFIED
+                this.mc.displayGuiScreen(new GuiScreenAddServerSLF(this, this.theServerData));
+                //MODIFIED END
+            }
+            // more code in the decompiled Minecraft
             else if (par1GuiButton.id == 8)
             {
                 // MODIFIED
